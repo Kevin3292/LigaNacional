@@ -1,0 +1,26 @@
+<?php
+	
+	namespace app\models;
+
+	class viewsModel{
+
+		/*---------- Modelo obtener vista ----------*/
+		protected function obtenerVistasModelo($vista){
+
+			$listaBlanca=["login","404","inicio","iniciotorneo", "estadios", "tecnicos", "equipos", "jugadores", "registro","jornadas","resultados","tabla"];
+
+			if(in_array($vista, $listaBlanca)){
+				if(is_file("app/views/content/".$vista.".php")){
+					$contenido="app/views/content/".$vista.".php";
+				}else{
+					$contenido="app/views/content/404.php";
+				}
+			}else if($vista=="index"){
+				$contenido="app/views/content/login.php";
+			}else{
+				$contenido="app/views/content/404.php";
+			}
+			return $contenido;
+		}
+
+	}
